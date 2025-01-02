@@ -1,0 +1,6 @@
+name = input("Enter your Name: ")
+age = int(input("enter your age: "))
+year = str( ( 2024 - age ) + 100 )
+print( name + " will be 100 years old in the year " + year )
+result = name + ", you will turn 100 in {}".format((2025-age)+100)
+print(result)
