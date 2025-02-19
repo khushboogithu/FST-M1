@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="softwaretestingmaterial">
+   
+   
+    
+     <test name="testngTest">
+        <classes>
+            <class name="HRM_Project_selenium.Activity_1" />
+            <class name="HRM_Project_selenium.Activity_2" />
+            <class name="HRM_Project_selenium.Activity_3" />
+            <class name="HRM_Project_selenium.Activity_4" />
+            <class name="HRM_Project_selenium.Activity_5" />
+            <class name="HRM_Project_selenium.Activity_6" />
+            <class name="HRM_Project_selenium.Activity_7" />
+            <class name="HRM_Project_selenium.Activity_8" />
+            <class name="HRM_Project_selenium.Activity_9" />
+        </classes>
+    </test>
+</suite>
