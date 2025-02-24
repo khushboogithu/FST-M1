@@ -1,22 +1,21 @@
 package activities;
 
-import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URI;
 import java.net.URL;
 
-//import org.testng.Assert;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 //import static org.testng.Assert.assertTrue;
 
-public class Activity2Test {
+public class Activity1Test {
     // Driver Declaration
     AndroidDriver driver;
 
@@ -27,39 +26,31 @@ public class Activity2Test {
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("android");
         options.setAutomationName("UiAutomator2");
-        options.setAppPackage("com.android.chrome");
-        options.setAppActivity("com.google.android.apps.chrome.Main");
+        options.setAppPackage("com.google.android.calculator");
+        options.setAppActivity(".Calculator");
         options.noReset();
 
-        // Set the Appium server URL
+        // Server Address
         URL serverURL = new URI("http://localhost:4723").toURL();
 
         // Driver Initialization
         driver = new AndroidDriver(serverURL, options);
-
-        // Open the page in Chrome
-        driver.get("https://training-support.net");
     }
 
     // Test method
     @Test
-    public void chromeTest() {
-        // Find heading on the page
-        String pageHeading = driver.findElement(AppiumBy.xpath(
-                "//android.widget.TextView[@text='Training Support']"
-        )).getText();
+    public void multiplyTest() {
+        // Perform the calculation
+        driver.findElement(AppiumBy.id("digit_5")).click();
+        driver.findElement(AppiumBy.accessibilityId("multiply")).click();
+        driver.findElement(AppiumBy.id("digit_8")).click();
+        driver.findElement(AppiumBy.accessibilityId("equals")).click();
 
-        // Print to console
-        System.out.println("Heading: " + pageHeading);
+        // Find the result
+        String result = driver.findElement(AppiumBy.id("result")).getText();
 
-        // Find and click the About Us link
-        driver.findElement(AppiumBy.accessibilityId("About Us")).click();
-
-        // Find heading of new page and print to console
-        String aboutPageHeading = driver.findElement(AppiumBy.xpath(
-                "//android.widget.TextView[@text='About Us']"
-        )).getText();
-        System.out.println(aboutPageHeading);
+        // Assertion
+        Assert.assertEquals(result, "40");
     }
 
 
