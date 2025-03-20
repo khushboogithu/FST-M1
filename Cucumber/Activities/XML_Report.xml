@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="4.635" tests="1" skipped="0" failures="1" errors="0">
+<testcase classname="Data driven test with Examples" name="Testing with Data from Scenario - #1.1" time="2.784">
+<failure type="org.opentest4j.AssertionFailedError" message="expected: &lt;Welcome Back, admin&gt; but was: &lt;Welcome Back, Admin!&gt;">
+<![CDATA[org.opentest4j.AssertionFailedError: expected: <Welcome Back, admin> but was: <Welcome Back, Admin!>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at stepDefinition.LoginSteps.confirmMessageAsInput(LoginSteps.java:65)
+	at ✽.get the confirmation text and verify message as "Welcome Back, admin"(classpath:features/Activity5.feature:26)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the login page.........................................passed
+When the user enters "admin" and "password".................................passed
+And clicks the submit button................................................passed
+Then get the confirmation text and verify message as "Welcome Back, admin"..failed
+]]></system-out>
+</testcase>
+</testsuite>
