@@ -9,10 +9,10 @@ def num_list():
     
     # Alternatively
     # list = list(range(11))
-
+    #return list(range(11))
     return list
 
 @pytest.fixture
-def wallet_amount():
+def wallet():
     amount = 0
     return amount

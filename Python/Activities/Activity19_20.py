@@ -1,8 +1,8 @@
 # Import pandas
-import pandas
-from pandas import ExcelWriter, DataFrame
+import pandas as pd
+from pandas import ExcelWriter
 
-# Create a dictionary that will be used to create the DataFrame
+# Create a dataset
 data = {
 	'FirstName':["Satvik", "Avinash", "Lahri"],
 	'LastName':["Shah", "Kati", "Rath"],
@@ -10,43 +10,40 @@ data = {
 	'PhoneNumber':["4537829158", "4892184058", "4528727830"]
 }
 
-# Create the DataFrame that will be written to the excel file
-dataframe = pandas.DataFrame(data)
+# Convert a dataset into a DataFrame 
+df = pd.DataFrame(data)
 
 # Print the dataframe
-print(dataframe)
+print(df)
 
-# Write the dataframe to a Excel file
-writer = ExcelWriter('sample1.xlsx')
-dataframe.to_excel(excel_writer=writer, sheet_name='Sheet1', index = False)
+# Write the dataframe to a Excel(.xlsx) file
+writer = ExcelWriter('./sample.xlsx')
+df.to_excel(writer, sheet_name='Sheet1', index = False)
+
+#Save the excel file
+#writer.save()
 
 # Commit data to the Excel file
-writer.close() #save the excel file
+writer.close()
 
-# Reading CSV file
+#Activity20
 
 # Read data from Excel sheet
-dataframe = pandas.read_excel('sample1.xlsx')
+df = pd.read_excel('./sample.xlsx')
 
 # Print the dataframe
-print(dataframe)
+print(df)
 
 # Print the number of rows and columns
 print("====================================")
-print("Number of rows and columns:", dataframe.shape)
+print("Number of rows and columns:", df.shape)
 
 # Print the data in the emails column only
 print("====================================")
 print("Emails:")
-print(dataframe['Email'])
+print(df['Email'])
 
 # Sort the data based on FirstName in ascending order and print the data
 print("====================================")
 print("Sorted data:")
-print(dataframe.sort_values('FirstName'))
-
-# Print the number of rows and columns
-print("-----------------------")
-print("Shape of DataFrame: ", dataframe.shape)
-print("No. of rows:", dataframe.shape[0])
-print("No. of columns:", dataframe.shape[1])
+print(df.sort_values('FirstName'))

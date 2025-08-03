@@ -1,18 +1,8 @@
-#Type 1
-
-num = {1, 2, 3, 10, 40, 156, 200}
+#numList = [1,2,3,4]
+numList = list(input("enter the numbers to add: ").split(","))
+#Calculate the sum of all
 sum = 0
-
-for n in num:
-  sum += n
-
-print(sum)
-
-#Type2
-numbers = list(input("Enter a sequence of comma separated values: ").split(", "))
-sum1 = 0
-
-for number in numbers:
-  sum1 += int(number)
-
-print(sum1)
+for n in numList:
+    sum = sum+ int(n)
+    
+print("Sum is: ", sum)    

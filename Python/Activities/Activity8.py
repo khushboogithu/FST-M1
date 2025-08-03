@@ -1,14 +1,7 @@
-# Given list of numbers
-numList = [10, 20, 30, 40, 10]
-print("Given list is ", numList)
-
-# Get first element in list
-firstElement = numList[0]
-# Get last element in list
-lastElement = numList[-1]
-
-# Check if first and last element are equal
-if (firstElement == lastElement):
-    print(True)
+#numList = [1,2,3,1]
+numList = list(input("enter the numbers to add: ").split(","))
+#Check first and last numbers
+if(numList[0]==numList[-1]):
+    print("First and last element are the same.")
 else:
-    print(False)
+    print("First and last element are not the same.")  
