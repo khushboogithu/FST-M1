@@ -37,3 +37,23 @@ SELECT * FROM orders WHERE purchase_amount < 500;
 
 -- Display the full data of orders that have purchase amount between 1000 and 2000.
 SELECT * FROM orders WHERE purchase_amount BETWEEN 1000 and 2000;
+
+--Activity 7 - Basic Aggregate functions
+--Write an SQL statement to find the total purchase amount of all orders.
+SELECT SUM(purchase_amount) FROM orders;
+--Write an SQL statement to find the average purchase amount of all orders.
+SELECT AVG(purchase_amount) FROM orders;
+--Write an SQL statement to get the maximum purchase amount of all the orders.
+SELECT MAX(purchase_amount) FROM orders;
+--Write an SQL statement to get the minimum purchase amount of all the orders.
+SELECT MIN(purchase_amount) FROM orders;
+--Write an SQL statement to find the number of salesmen listed in the table.
+SELECT COUNT(DISTINCT salesman_id) FROM orders;
+
+--Activity 8 - Aggregate operations
+--Write an SQL statement to find the highest purchase amount ordered by the each customer with their ID and highest purchase amount.
+SELECT customer_id, MAX(purchase_amount) FROM orders GROUP BY customer_id;
+--Write an SQL statement to find the highest purchase amount on '2012-08-17' for each salesman with their ID.
+SELECT salesman_id, order_date, MAX(purchase_amount) FROM orders WHERE order_date=TO_DATE('2012/08/17', 'YYYY/MM/DD') GROUP BY salesman_id, order_date;
+--Write an SQL statement to find the highest purchase amount with their ID and order date, for only those customers who have a higher purchase amount within the list [2030, 3450, 5760, 6000].
+SELECT order_no, order_date, customer_id, MAX(purchase_amount) FROM orders GROUP BY customer_id, order_no, order_date HAVING MAX(purchase_amount) IN (2030, 3450, 5760, 6000);
