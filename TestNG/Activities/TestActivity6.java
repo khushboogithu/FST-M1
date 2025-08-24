@@ -1,0 +1,75 @@
+package activities;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class TestActivity6 {
+	
+	//Declaring the driver object
+		WebDriver driver;
+		
+		//Declaring the wait object
+		WebDriverWait wait;
+		
+		//Browser setup function
+		@BeforeClass
+		public void setup()
+		{
+			//Initialize the driver
+			driver = new FirefoxDriver();
+			
+			//Initialize the wait
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			
+			//Open the page
+			driver.get("https://training-support.net/webelements/login-form");		
+		}
+		
+		@Test(priority = 1)
+		public void homePageTest()
+		{
+			Assert.assertEquals(driver.getTitle(), "Selenium: Login Form");
+			
+		}
+		
+		@Test(dependsOnMethods = {"homePageTest"})
+		@Parameters({ "username", "password"})
+		public void loginPageTest(String username, String password)
+		{
+			// username and password 
+	        WebElement loginusername = driver.findElement(By.id("username"));
+	        WebElement loginpassword = driver.findElement(By.id("password"));
+	 
+	        // Enter credentials
+	        loginusername.sendKeys(username);
+	        loginpassword.sendKeys(password);
+	 
+	        // Click login
+	        driver.findElement(By.xpath("//button[text()='Submit']")).click();
+	 
+	        // login confirmation message
+	        String loginMessage = driver.findElement(By.cssSelector("h2.text-center")).getText();
+	        Assert.assertEquals("Welcome Back, Admin!", loginMessage);
+			
+		}	
+			
+		//Browser cleanup function
+		@AfterClass
+		public void tearDown()
+		{
+			//Close the browser
+			driver.quit();
+			
+		}
+
+}
